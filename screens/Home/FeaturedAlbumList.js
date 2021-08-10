@@ -35,9 +35,11 @@ class FeaturedAlbumList extends Component {
                     <Avatar
                         size={120}
                         rounded
-                        source={{
-                            uri: item.image,
-                        }}
+                        source={
+                            item.image
+                                ? { uri: item.image }
+                                : require("../../assets/default_album.png")
+                        }
                         containerStyle={{ margin: 10 }}
                     />
                     <Text style={{ margin: 10 }}>{item.title}</Text>
