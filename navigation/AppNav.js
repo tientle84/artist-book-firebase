@@ -10,7 +10,7 @@ import Profile from "../screens/Auth/Profile";
 
 const Tab = createBottomTabNavigator();
 
-export default function AppNav() {
+export default function AppNav(props) {
     return (
         <Tab.Navigator initialRouteName="Home">
             <Tab.Screen
@@ -71,7 +71,8 @@ export default function AppNav() {
             />
             <Tab.Screen
                 name="Profile"
-                component={Profile}
+                //component={Profile}
+                children={() => <Profile user={props.user} />}
                 options={{
                     tabBarLabel: "Profile",
                     tabBarIcon: ({ color, size }) => (
