@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import { Avatar } from "react-native-elements";
+import AppButton from "../../components/AppButton";
 import { logout } from "../../components/Firebase/firebase";
 
 async function handleSignOut() {
@@ -13,9 +14,7 @@ async function handleSignOut() {
 
 export default function Profile(props) {
     return (
-        <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
+        <View style={styles.container}>
             <Avatar
                 size={120}
                 rounded
@@ -23,9 +22,20 @@ export default function Profile(props) {
                 containerStyle={{ margin: 10 }}
             />
             <Text>{props.user.email}</Text>
-            <View style={{ marginTop: 50 }}>
-                <Button title="Sign Out" onPress={handleSignOut} />
-            </View>
+            <AppButton
+                title="Sign Out"
+                color="secondary"
+                onPress={handleSignOut}
+            />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        margin: 20,
+    },
+});
